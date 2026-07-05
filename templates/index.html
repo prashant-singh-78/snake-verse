@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Verse - Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    <div class="container">
+        <header>
+            <h1>Snake <span class="gold-text">Verse</span></h1>
+            <p>Venomous or Non-Venomous? Upload an image to find out.</p>
+        </header>
+
+        <main>
+            <div class="card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="upload-area" id="upload-area">
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                        <p>Drag and drop an image here</p>
+                        <span class="gold-text">or click to browse</span>
+                    </div>
+                </div>
+
+                <div id="loader" class="loader hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing Image...</p>
+                </div>
+
+                <div id="result-section" class="result-section hidden">
+                    <div class="image-preview">
+                        <img id="preview-img" src="" alt="Uploaded Snake">
+                    </div>
+                    <div class="prediction-details">
+                        <h2>Prediction</h2>
+                        <h3 id="pred-class" class="gold-text">Unknown</h3>
+                        <p>Confidence: <span id="pred-conf">0%</span></p>
+                    </div>
+                    <button id="reset-btn" class="btn">Classify Another</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Include Vanilla Tilt JS for 3D effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
